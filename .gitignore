@@ -23,7 +23,6 @@ npm-debug.log
 
 *pages*/*/*.*
 !*pages*/*/*.bemjson
-!*pages*/.bem/*
 
 !update*.log
 !libs-arc/*.zip
