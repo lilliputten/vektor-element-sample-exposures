@@ -1,0 +1,13 @@
+// $Date: 2017-05-23 18:11:09 +0300 (Вт, 23 май 2017) $
+// $Id: ReportDisplayGroup__Details.styl 8418 2017-05-23 15:11:09Z miheev $
+
+// @require '../!Defaults.styl'
+
+.ReportDisplayGroup
+    &__Details
+        overflow: hidden
+        transition: max-height .3s ease-out
+        ^[0]_expandable:not(^[0]_expanded) &
+            max-height: 0
+        //
+

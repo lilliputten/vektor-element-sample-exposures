@@ -1,0 +1,47 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals debugger, DEBUG, DBG, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs, mix, mod */
+/**
+ *
+ * @module ReportDisplayGroup__Table
+ * @overview __INFO__
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ *
+ * @since 2017.05.22 18:29:43
+ * @version 2017.05.22 18:29:43
+ *
+ * $Date: 2017-05-23 18:33:47 +0300 (Вт, 23 май 2017) $
+ * $Id: ReportDisplayGroup__Table.bemhtml 8420 2017-05-23 15:33:47Z miheev $
+ *
+ */
+
+block('ReportDisplayGroup').elem('Table')(
+
+    content()(function(){
+        return {
+            block : 'tableview', // Вложенная таблица
+            id : this.rootCtx.id + '_Table',
+            mix : [
+                { block : 'ReportDisplayGroup', elem : 'TableBlock' },
+                // { block : 'dataloader', mods : { src : 'local' } }, // Для инициализации `dataloader` на объекте. См. `ReportResultDom:initReportResultDom`
+            ],
+            mods : {
+                mode : 'static',
+                // vpadded : true, // Отступ снизу и сверху
+                resizable : true, // С изменяемой шириной колонок
+                // selectable : true, // С выбираемыми элементами (выбор "текущего" элемента)
+                // checkable : true, // С отмечаемыми элементами (множественный выбор)
+                // hoverable : true, // С подсвечиванием строки под курсором
+                nostore : true,
+            },
+            data : {
+                columns : this.Table.columns,
+                rows : this.Table.rows,
+            },
+        };
+    }),
+
+    tag()()
+
+);
+

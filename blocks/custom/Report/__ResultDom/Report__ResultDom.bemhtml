@@ -1,0 +1,20 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals debugger, DEBUG, DBG, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs, mix, mod */
+/**
+ *
+ * @module Report__ResultDom
+ * @overview __INFO__
+ * $Date: 2017-06-02 17:43:07 +0300 (Пт, 02 июн 2017) $
+ * $Id: Report__ResultDom.bemhtml 8479 2017-06-02 14:43:07Z miheev $
+ *
+ */
+
+block('Report').elem('ResultDom')(
+
+    mix()([
+        // Локальная загрузка данных
+        { block : 'dataloader', mods : { src : 'local' } },
+    ])
+
+);
+

@@ -1,0 +1,77 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals debugger, DEBUG, DBG, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs, mix, mod */
+/**
+ *
+ * @module ReportDisplayGroup
+ * @overview __INFO__
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2017.05.22 16:50:22
+ * @version 2017.05.22 16:50:22
+ *
+ * $Date: 2017-05-23 16:13:53 +0300 (Вт, 23 май 2017) $
+ * $Id: ReportDisplayGroup.bemhtml 8415 2017-05-23 13:13:53Z miheev $
+ *
+ */
+
+block('ReportDisplayGroup')(
+
+    def()(function(){
+        var ctx = this.ctx;
+
+        ctx = Object.assign({
+            data : {},
+            id : 'defaultReportDisplayGroup',
+        }, ctx);
+
+        // Сохраняем данные и параметры для последующего использования...
+        this.rootCtx = ctx;
+        this.Stat = ctx.Stat || {};
+        this.Table = ctx.Table || {};
+
+        this.mods.initialExpanded = this.mods.expanded;
+
+        return applyNext();
+    }),
+
+    addMix()(function(){
+        return [
+            { block : 'exportable', mods : { provider : this.block } },
+        ];
+    }),
+
+    addJs()(function(){
+        return {
+            id : this.ctx.id,
+            title : this.ctx.title,
+        };
+    }),
+
+    // Добавляем полосу заголовка
+    // mod('showTitle', true).
+    match(function(){ return this.mods.showTitle || this.mods.expandable; }).
+    content()(function(){
+        var ctx = this.ctx,
+            content = applyNext() || []
+        ;
+        content.unshift({
+            elem : 'TitleBar',
+        });
+        return content;
+    }),
+
+    // Добавляем блок детальной информации
+    content()(function(){
+        var ctx = this.ctx,
+            content = applyNext() || []
+        ;
+        content.push({
+            elem : 'Details',
+        });
+        return content;
+    }),
+
+    tag()()
+
+);
+

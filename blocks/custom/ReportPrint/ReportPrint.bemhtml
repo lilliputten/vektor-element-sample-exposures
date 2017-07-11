@@ -1,0 +1,35 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals debugger, DEBUG, DBG, project, match, block, elem, mod, elemMod, oninit, xjstOptions, wrap, replace, extend, mode, def, content, appendContent, prependContent, attrs, addAttrs, js, addJs, mix, addMix, mods, addMods, addElemMods, elemMods, tag, cls, bem, local, applyCtx, applyNext, apply */
+/**
+ *
+ * @module ReportPrint
+ * @overview __INFO__
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2017.06.02 19:21:03
+ * @version 2017.06.02 19:21:03
+ *
+ * $Date: 2017-06-06 15:15:36 +0300 (Вт, 06 июн 2017) $
+ * $Id: ReportPrint.bemhtml 8547 2017-06-06 12:15:36Z miheev $
+ *
+ */
+
+block('ReportPrint')(
+
+    def()(function(){
+        this.escapeContent = false;
+        return applyNext();
+    }),
+
+    wrap()(function(){
+        return [
+            this.ctx,
+            {
+                block : 'ReportPrintBody',
+                elem : 'Holder',
+            },
+        ];
+    })
+
+);
+

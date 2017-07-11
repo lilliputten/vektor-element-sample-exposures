@@ -1,0 +1,24 @@
+/* jshint camelcase: false */
+/* jshint unused: false */
+/* globals debugger, DBG, applyCtx, content, applyNext, block, elem, attrs, def */
+
+/**
+ *
+ *  @overview tableview__headrow
+ *
+ *  @author lilliputten <lilliputten@yandex.ru>
+ *  @since 2016.10.31 13:31
+ *  @version 2016.10.31 13:31
+ *
+*/
+
+/*
+ *  @module tableview__headrow
+ */
+
+block('tableview').elem('headrow')(
+
+    tag()('tr')
+
+);
+

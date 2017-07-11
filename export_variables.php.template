@@ -1,0 +1,6 @@
+<?php
+
+$bemVariables = [<% for ( var i=0; i<VARIABLES.length; i++ ) { %>
+    '<%= VARIABLES[i].name %>' => '<%= String(VARIABLES[i].value||'').replace(/([\\"'])/g,'\\$1').replace(/(\n)/g,'\\n') %>',<% } %>
+];
+

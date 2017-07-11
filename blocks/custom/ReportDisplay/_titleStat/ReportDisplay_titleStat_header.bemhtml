@@ -1,0 +1,19 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals debugger, DEBUG, DBG, project, match, block, elem, mod, elemMod, oninit, xjstOptions, wrap, replace, extend, mode, def, content, appendContent, prependContent, attrs, addAttrs, js, addJs, mix, addMix, mods, addMods, addElemMods, elemMods, tag, cls, bem, local, applyCtx, applyNext, apply */
+/**
+ *
+ * @module ReportDisplay_titleStat_header
+ * @overview __INFO__
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2017.06.13 15:26:17
+ * @version 2017.06.13 15:26:17
+ *
+ * $Date: 2017-06-13 19:21:13 +0300 (Вт, 13 июн 2017) $
+ * $Id: ReportDisplay_titleStat_header.bemhtml 8587 2017-06-13 16:21:13Z miheev $
+ *
+ */
+
+block('ReportDisplay').mod('titleStat', 'header')(
+
+);

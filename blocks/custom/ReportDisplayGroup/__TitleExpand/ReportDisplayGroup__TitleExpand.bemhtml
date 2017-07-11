@@ -1,0 +1,41 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals debugger, DEBUG, DBG, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs, mix, mod */
+/**
+ *
+ * @module ReportDisplayGroup__TitleExpand
+ * @overview __INFO__
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ *
+ * @since 2017.05.22 17:56:31
+ * @version 2017.05.22 17:56:31
+ *
+ * $Date: 2017-05-22 20:29:39 +0300 (Пн, 22 май 2017) $
+ * $Id: ReportDisplayGroup__TitleExpand.bemhtml 8405 2017-05-22 17:29:39Z miheev $
+ *
+ */
+
+block('ReportDisplayGroup').elem('TitleExpand')(
+
+    content()(function(){
+        return {
+            block : 'button',
+            cls : 'button_no_frame button_icon',
+            attrs : {
+                title : 'Показать подробную информацию',
+            },
+            mods : {
+                id : 'Expand',
+                theme : 'islands',
+                size : 'm',
+                togglable : 'check',
+                checked : this.mods.expanded,
+            },
+            icon : { block : 'icon', cls : 'icon-turnaround ti-angle-down', mods : { /* hamburger : true */ } },
+        };
+    }),
+
+    tag()()
+
+);
+

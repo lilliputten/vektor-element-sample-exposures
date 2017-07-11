@@ -1,0 +1,47 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals debugger, DEBUG, DBG, project, match, block, elem, mod, elemMod, oninit, xjstOptions, wrap, replace, extend, mode, def, content, appendContent, prependContent, attrs, addAttrs, js, addJs, mix, addMix, mods, addMods, addElemMods, elemMods, tag, cls, bem, local, applyCtx, applyNext, apply */
+/**
+ *
+ * @module ReportDisplayStat__Item
+ * @overview __INFO__
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ *
+ * @since 2017.06.05 17:28:39
+ * @version 2017.06.05 17:28:39
+ *
+ * $Date: 2017-06-27 12:09:08 +0300 (Вт, 27 июн 2017) $
+ * $Id: ReportDisplayStat__Item.bemhtml 8639 2017-06-27 09:09:08Z miheev $
+ *
+ */
+
+block('ReportDisplayStat').elem('Item')(
+
+    addAttrs()(function(){
+        return {
+            title : this.ctx.title,
+        };
+    }),
+
+    addJs()(function(){
+        return {
+            id : this.ctx.id,
+            title : this.ctx.title,
+            conditions : this.ctx.conditions,
+        };
+    }),
+
+    addElemMods()(function(){
+        return Object.assign({ id : this.ctx.id }, this.ctx.conditions);
+    }),
+
+    content()(function(){
+        var content = [
+            { elem : 'ItemTitle', content : this.ctx.title+':' },
+            { elem : 'ItemContent', content : this.ctx.val },
+        ];
+        return content;
+    })
+
+);
+

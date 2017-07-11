@@ -1,0 +1,76 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals debugger, DEBUG, DBG, project, match, block, elem, mod, elemMod, oninit, xjstOptions, wrap, replace, extend, mode, def, content, appendContent, prependContent, attrs, addAttrs, js, addJs, mix, addMix, mods, addMods, addElemMods, elemMods, tag, cls, bem, local, applyCtx, applyNext, apply */
+/**
+ *
+ * @module ReportDisplayTitleStat
+ * @overview __INFO__
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2017.06.08 17:29:00
+ * @version 2017.06.08 17:29:00
+ *
+ * $Date: 2017-06-14 17:04:25 +0300 (Ср, 14 июн 2017) $
+ * $Id: ReportDisplayTitleStat.bemhtml 8594 2017-06-14 14:04:25Z miheev $
+ *
+ */
+
+block('ReportDisplayTitleStat')(
+
+    // addJs()(true),
+
+    content()(function(){
+        var
+            that = this,
+            titleStatColumns = this.ctx.titleStatColumns, // Список колонок, показываемых в заголовке-таблиц
+            // statItemsDescr = this.ctx.statItemsDescr, // Описание всех элементов статистики
+            // combinedColumns = this.ctx.combinedColumns, // Объединённые колонки для получения отсутствующих в `statItemsDescr` данных
+            content = this.ctx.content = applyNext() || [], // Список описаний элементов с данными (.val)
+            indices = {}, // Храним индексы для массивов элементов
+            /** getListItemById {{{ ** Вспомогательный метод поиска в массиве элементов вида:
+             * { id : 'someId', ... }
+             * @param {String} listId - Идентификатор массива в `this.ctx`.
+             * @param {String} id - Идентификатор элемента.
+             * @returns {null|Object}
+             * Создаёт индекс элементов в `this['index@'+listId]`.
+             */
+            getListItemById = function(listId, id){
+                var index;
+                if ( ( index = indices[listId] ) === undefined && Array.isArray(that.ctx[listId]) && that.ctx[listId].length ) {
+                    index = indices[listId] = that.ctx[listId].reduce(function(index, item){
+                            index[item.id] = item;
+                            return index;
+                        }, {});
+                }
+                return index && index[id];
+            }/*}}}*/
+        ;
+        // Формируем список колонок в соответствии с `titleStatColumns`
+        if ( Array.isArray(titleStatColumns) ) {
+            content = titleStatColumns.map(function(id){
+                // Элемент из основного списка
+                var item = getListItemById('content', id);
+                // ...Если не найден, то...
+                if ( !item ) {
+                    // ...Элемент из описания всех элементов статистики
+                    item = getListItemById('statItemsDescr', id);
+                    // ...Если не найден или указано брать из объединённого списка элементов...
+                    if ( !item || item.fromCombined ) {
+                        // ...Ищем элемент в объединённом списке...
+                        item = Object.assign({}, getListItemById('combinedColumns', id), item);
+                    }
+                }
+                return item;
+            });
+        }
+        return content;
+    }),
+
+    content()(function(){
+        return {
+            elem : 'Content',
+            content : applyNext(),
+        };
+    })
+
+);
+

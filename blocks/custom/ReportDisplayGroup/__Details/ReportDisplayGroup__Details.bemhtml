@@ -1,0 +1,59 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals debugger, DEBUG, DBG, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs, mix, mod */
+/**
+ *
+ * @module ReportDisplayGroup__Details
+ * @overview __INFO__
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ *
+ * @since 2017.05.22 18:20:33
+ * @version 2017.05.22 18:20:33
+ *
+ * $Date: 2017-05-23 16:13:53 +0300 (Вт, 23 май 2017) $
+ * $Id: ReportDisplayGroup__Details.bemhtml 8415 2017-05-23 13:13:53Z miheev $
+ *
+ */
+
+block('ReportDisplayGroup').elem('Details')(
+
+    content()(function(){
+        var content = applyNext();
+        content || ( content = [] );
+        Array.isArray(content) || ( content = [content] );
+        return content;
+    }),
+
+    match(function(){ return !this.mods.empty && this.mods.showStat && !this.mods.titleStat && this.Stat && !project.helpers.objects.isEmpty(this.Stat); })
+    .content()(function(){
+        var content = applyNext();
+        content.push({ elem : 'Stat' });
+        return content;
+    }),
+
+    match(function(){ return !this.mods.empty && this.mods.showTable && this.Table.columns; })
+    .content()(function(){
+        var content = applyNext();
+        var table = { elem : 'Table' };
+        if ( this.mods.tableFirst ) {
+            content.unshift(table);
+        }
+        else {
+            content.push(table);
+        }
+        return content;
+    }),
+
+    match(function(){ return !this.mods.empty; })
+    .content()(function(){
+        var content = applyNext();
+        return {
+            elem : 'DetailsContent',
+            content : content,
+        };
+    }),
+
+    tag()()
+
+);
+

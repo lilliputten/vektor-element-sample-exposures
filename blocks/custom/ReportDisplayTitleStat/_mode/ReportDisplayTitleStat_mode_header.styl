@@ -1,0 +1,27 @@
+// $Date: 2017-06-14 13:51:11 +0300 (Ср, 14 июн 2017) $
+// $Id: ReportDisplayTitleStat_mode_header.styl 8591 2017-06-14 10:51:11Z miheev $
+
+@require '../!Defaults.styl'
+
+.ReportDisplayTitleStat
+    &_mode
+        &_header
+            & ^[0]__Item
+                // background-color: $HeaderItemBgColor
+                color: $HeaderItemFgColor
+                &
+                &:first-child
+                    border-color: $HeaderDelimColor
+                & ^[0]__Delim
+                    border-right-color: $HeaderDelimColor
+                &_hovered
+                    background-color: $HeaderItemHoveredBgColor
+                &_resizing
+                    background-color: $HeaderItemResizingBgColor
+                    & ^[0]__Delim
+                        border-right-color: $HeaderDelimResizingColor
+                // // (Повтор для "ведущего" элемента) Не подсвечиваем соседние элементы
+                // ^[0]_resizing ^[0]__Item:not(^[0]__Item_resizing)
+                //     background: none
+            //
+

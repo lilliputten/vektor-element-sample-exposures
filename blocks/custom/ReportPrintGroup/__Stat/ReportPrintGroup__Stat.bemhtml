@@ -1,0 +1,38 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals debugger, DEBUG, DBG, project, match, block, elem, mod, elemMod, oninit, xjstOptions, wrap, replace, extend, mode, def, content, appendContent, prependContent, attrs, addAttrs, js, addJs, mix, addMix, mods, addMods, addElemMods, elemMods, tag, cls, bem, local, applyCtx, applyNext, apply */
+/**
+ *
+ * @module ReportPrintGroup__Stat
+ * @overview __INFO__
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ *
+ * @since 2017.06.06 13:31:38
+ * @version 2017.06.06 13:31:38
+ *
+ * $Date: 2017-06-06 15:15:36 +0300 (Вт, 06 июн 2017) $
+ * $Id: ReportPrintGroup__Stat.bemhtml 8547 2017-06-06 12:15:36Z miheev $
+ *
+ */
+
+block('ReportPrintGroup').elem('Stat')(
+
+    def()(function(){
+        var rootCtx = this.rootCtx;
+
+        // Заменяем элемент 'Stat' на блок 'ReportDisplayStat'
+        var ctx = Object.assign({}, this.ctx, {
+            mix : [
+                { block : this.block, elem : this.elem },
+            ],
+            block : 'ReportPrintStat',
+            content : rootCtx.Stat,
+        });
+
+        delete ctx.elem;
+
+        return applyCtx(ctx);
+    })
+
+);
+

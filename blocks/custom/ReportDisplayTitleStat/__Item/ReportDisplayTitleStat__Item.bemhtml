@@ -1,0 +1,72 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals debugger, DEBUG, DBG, project, match, block, elem, mod, elemMod, oninit, xjstOptions, wrap, replace, extend, mode, def, content, appendContent, prependContent, attrs, addAttrs, js, addJs, mix, addMix, mods, addMods, addElemMods, elemMods, tag, cls, bem, local, applyCtx, applyNext, apply */
+/**
+ *
+ * @module ReportDisplayTitleStat__Item
+ * @overview __INFO__
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ *
+ * @since 2017.06.08 17:29:29
+ * @version 2017.06.08 17:29:29
+ *
+ * $Date: 2017-06-09 19:46:24 +0300 (Пт, 09 июн 2017) $
+ * $Id: ReportDisplayTitleStat__Item.bemhtml 8583 2017-06-09 16:46:24Z miheev $
+ *
+ */
+
+block('ReportDisplayTitleStat').elem('Item')(
+
+    addAttrs()(function(){
+        var title = this.ctx.title;
+        if ( this.ctx.val ) {
+            title += ': ' + this.ctx.val;
+        }
+        return {
+            // id : this.ctx.id,
+            title : title,
+        };
+    }),
+
+    addElemMods()(function(){
+        var isVisible = !this.ctx.conditions || ( this.ctx.conditions.display && !this.ctx.conditions.hidden );
+        return {
+            id : this.ctx.id,
+            hidden : !isVisible,
+            // title : this.ctx.title,
+        };
+    }),
+
+    addJs()(function(){
+        return {
+            conditions : this.ctx.conditions,
+            id : this.ctx.id,
+            title : this.ctx.title,
+        };
+    }),
+
+    content()(function(){
+        var content = applyNext();
+        return  content || this.ctx.val;
+    }),
+
+    content()(function(){
+        var content = applyNext();
+        return [
+            {
+                elem : 'Text',
+                // itemCtx : this.ctx,
+                content : content,
+            },
+            {
+                elem : 'Delim',
+                // itemCtx : this.ctx,
+                id : this.ctx.id,
+            },
+        ];
+    }),
+
+    tag()()
+
+);
+

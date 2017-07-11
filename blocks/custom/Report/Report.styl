@@ -1,0 +1,19 @@
+// $Date: 2017-06-02 21:02:56 +0300 (Пт, 02 июн 2017) $
+// $Id: Report.styl 8482 2017-06-02 18:02:56Z miheev $
+
+.panelbox
+    &_ReportRoot
+
+        // Условно показываемые блоки
+        for $id in report_created report_absent
+            &:not(^[0]_{$id}) .show_if.if_{$id}
+                display: none
+
+        // Затемняем фон в панели управления отчётом (#box_actions_controls)
+        & #box_actions_controls
+            background-color: lighten($neutral-color,35)
+
+// .Report__show
+//     .screenholder
+//         background: #FFF
+

@@ -1,0 +1,22 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals debugger, DEBUG, DBG, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs */
+/**
+ *
+ * @module ReportPrintGroup__TableRow
+ * @overview ReportPrintGroup__TableRow
+ * @author lilliputten <lilliputten@yandex.ru>
+ *
+ * @since 2017.04.13 19:54:27
+ * @version 2017.04.13 19:54:27
+ *
+ * $Date: 2017-06-06 15:15:36 +0300 (Вт, 06 июн 2017) $
+ * $Id: ReportPrintGroup__TableRow.bemhtml 8547 2017-06-06 12:15:36Z miheev $
+ *
+*/
+
+block('ReportPrintGroup').elem('TableRow')(
+
+    tag()('tr')
+
+);
+

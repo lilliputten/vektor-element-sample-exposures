@@ -1,0 +1,42 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals debugger, DEBUG, DBG, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs */
+/**
+ *
+ * @module ReportPrintStat__Item
+ * @overview ReportPrintStat__Item
+ * @author lilliputten <lilliputten@yandex.ru>
+ *
+ * @since 2017.04.14 15:08:20
+ * @version 2017.04.14 15:08:20
+ *
+ * $Date: 2017-06-06 15:15:36 +0300 (Вт, 06 июн 2017) $
+ * $Id: ReportPrintStat__Item.bemhtml 8547 2017-06-06 12:15:36Z miheev $
+ *
+*/
+
+block('ReportPrintStat').elem('Item')(
+
+    /** match val -> content ** {{{ Заголовок */
+    match(function(){ return this.ctx.val; }).content()(function(){
+        var content = this._getArray(applyNext());
+        content.push({
+            elem : 'ItemValue',
+            content : this.ctx.val,
+        });
+        return content;
+    }),/*}}}*/
+
+    /** match title -> content ** {{{ Заголовок */
+    match(function(){ return this.ctx.title; }).content()(function(){
+        var content = this._getArray(applyNext());
+        content.unshift({
+            elem : 'ItemLabel',
+            content : this.ctx.title + ':',
+        });
+        return content;
+    }),/*}}}*/
+
+    tag()()
+
+);
+

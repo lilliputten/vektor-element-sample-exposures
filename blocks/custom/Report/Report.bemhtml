@@ -1,0 +1,46 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals debugger, DEBUG, DBG, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs, mix */
+/**
+ *
+ * @overview Компоненты для создания отчётов - BEMHTML шаблоны
+ * @author Михаил Греков <mihail-grekov@mail.ru>
+ * @since 2016.08.19, 14:00
+ * @version 2016.10.04, 19:52
+ *
+ * $Date: 2017-05-22 17:26:56 +0300 (Пн, 22 май 2017) $
+ * $Id: Report.bemhtml 8404 2017-05-22 14:26:56Z miheev $
+ *
+*/
+
+block('Report')(
+
+    // mix()([{ block : 'object_filters' }]),
+
+    def()(function(){
+        var ctx = this.ctx;
+
+        if ( ctx.boxing ) {
+            project.helpers.process_boxing_properties(ctx); // расширяем свойства объектов `boxing` (вертикальное позиционирование -- панели и скролл-боксы)
+        }
+
+        return applyNext();
+    }),
+
+    attrs()(function(){
+        var ctx = this.ctx;
+        return {
+            id : ctx.box_id || ctx.id,
+        };
+    }),
+
+    js()(function(){
+        var ctx = this.ctx;
+        return {
+            id : ctx.box_id || ctx.id,
+        };
+    }),
+
+    tag()()
+
+);
+

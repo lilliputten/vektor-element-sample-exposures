@@ -1,0 +1,18 @@
+// $Date: 2017-06-14 13:12:41 +0300 (Ср, 14 июн 2017) $
+// $Id: ReportDisplayTitleStat__Delim.styl 8590 2017-06-14 10:12:41Z miheev $
+
+@require '../!Defaults.styl'
+
+.ReportDisplayTitleStat
+    &__Delim
+        height: $DelimHeight
+        display: inline-block
+        text-align: right
+        position: absolute
+        right: 0
+        width: $DelimWidth
+        border-right: 0px solid $DelimColor
+        transition: all .15s
+        &:hover
+            cursor: col-resize
+

@@ -1,0 +1,21 @@
+block('ObjectsSelector').elem('menu')(
+
+    def()(function(){
+        var ctx = this.ctx;
+        var elemMods = ctx.elemMods || {};
+        return applyCtx({
+            block : 'menu',
+            js : true,
+            mix : { block : this.block, elem : this.elem },
+            mods : {
+                mode : elemMods.mode || this.mods.mode || 'check',
+                theme : 'islands',
+                size : 'm',
+            },
+            content : this.ctx.content,
+        });
+
+    })
+
+);
+

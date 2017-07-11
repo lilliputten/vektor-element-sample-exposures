@@ -1,0 +1,31 @@
+// $Date: 2017-06-06 15:15:36 +0300 (Вт, 06 июн 2017) $
+// $Id: ReportDisplayStat__Item.styl 8547 2017-06-06 12:15:36Z miheev $
+
+// @require '../!Defaults.styl'
+
+$h_padding = 10px
+$v_padding = 10px
+$item_title_width = 200px
+
+.ReportDisplayStat
+    &__Item
+        // padding: 5px 0
+        margin-bottom: 5px
+        clearfix()
+        &Title
+        &Content
+            float: left
+        &Title
+            // padding: 0 $h_padding
+            padding-right: $h_padding
+            // text-align: right
+            text-overflow: ellipsis
+            width: $item_title_width
+            color: $light-text-color
+            // font-weight: bold
+        &_hidden
+        &_print
+        &_export
+            display: none
+        //
+

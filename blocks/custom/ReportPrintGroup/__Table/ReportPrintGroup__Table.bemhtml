@@ -1,0 +1,60 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals debugger, DEBUG, DBG, project, match, block, elem, mod, elemMod, oninit, xjstOptions, wrap, replace, extend, mode, def, content, appendContent, prependContent, attrs, addAttrs, js, addJs, mix, addMix, mods, addMods, addElemMods, elemMods, tag, cls, bem, local, applyCtx, applyNext, apply */
+/**
+ *
+ * @module ReportPrintGroup__Table
+ * @overview __INFO__
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ *
+ * @since 2017.06.06 13:31:44
+ * @version 2017.06.06 13:31:44
+ *
+ * $Date: 2017-06-06 15:15:36 +0300 (Вт, 06 июн 2017) $
+ * $Id: ReportPrintGroup__Table.bemhtml 8547 2017-06-06 12:15:36Z miheev $
+ *
+ */
+
+block('ReportPrintGroup').elem('Table')(
+
+    content()(function(){
+        var rootCtx = this.rootCtx;
+        return [
+            {
+                elem : 'TableHead',
+                content : {
+                    elem : 'TableRow',
+                    elemMods : { Head : true, },
+                    content : rootCtx.Table.columns.map(function(column){
+                        return {
+                            elem : 'TableCell',
+                            elemMods : { Head : true, },
+                            content : column,
+                        };
+                    }),
+                },
+            },
+            {
+                elem : 'TableBody',
+                content : rootCtx.Table.rows.map(function(row){
+                    return {
+                        elem : 'TableRow',
+                        elemMods : { Body : true, },
+                        content : row.map(function(cell){
+                            return {
+                                elem : 'TableCell',
+                                elemMods : { Body : true, },
+                                content : cell,
+                            };
+                        })
+                    };
+                }),
+            },
+        ];
+    }),
+
+    tag()('table')
+
+
+);
+

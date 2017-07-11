@@ -1,0 +1,62 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals debugger, DEBUG, DBG, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs, mix, mod */
+/**
+ *
+ * @module ReportDisplayGroup__TitleText
+ * @overview __INFO__
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ *
+ * @since 2017.05.22 18:14:58
+ * @version 2017.05.22 18:14:58
+ *
+ * $Date: 2017-05-22 20:29:39 +0300 (Пн, 22 май 2017) $
+ * $Id: ReportDisplayGroup__TitleText.bemhtml 8405 2017-05-22 17:29:39Z miheev $
+ *
+ */
+
+block('ReportDisplayGroup').elem('TitleText')(
+
+    /*{{{ (BEMHTML Samples)
+
+    def()(function(){
+        var ctx = this.ctx;
+
+        if ( !ctx.cls ) { ctx.cls = ''; }
+        if ( !ctx.mix ) { ctx.mix = []; }
+        if ( !ctx.elemMods ) { ctx.elemMods = {}; }
+        if ( !ctx.attrs ) { ctx.attrs = {}; }
+
+        // return applyCtx(ctx);
+        return applyNext();
+    }),
+
+    attrs()(function(){
+        var ctx = this.ctx;
+        return {
+            id : ctx.id,
+            href : ctx.url,
+        };
+    }),
+
+    js()(function(){
+        var ctx = this.ctx;
+        return {
+             id : ctx.id,
+        };
+    }),
+
+    content()(function(){
+        var ctx = this.ctx;
+        var content = [
+            // { elem : 'inner', content : ctx.content },
+        ];
+        return content;
+    }),
+
+    }}}*/
+
+    tag()()
+
+);
+

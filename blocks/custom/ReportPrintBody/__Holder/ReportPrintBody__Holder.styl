@@ -1,0 +1,28 @@
+// $Date: 2017-06-06 15:52:22 +0300 (Вт, 06 июн 2017) $
+// $Id: ReportPrintBody__Holder.styl 8549 2017-06-06 12:52:22Z miheev $
+
+// @require '../!Defaults.styl'
+
+.ReportPrintBody
+    &__Holder
+        display: none
+
+@media only screen
+
+    .ReportPrintBody
+        &__Holder
+            display: block
+            position: absolute
+            left: 0
+            top: 0
+            right: 0
+            bottom: 0
+            background: #FFF
+            transition: opacity .3s ease-out
+            opacity: 1
+            ^[0]_ready &
+                // border: 2px solid green
+                background: none
+                opacity: 0
+                pointer-events: none
+

@@ -1,0 +1,13 @@
+block('ObjectsSelector').elem('container')(
+
+    // Если нет флага "не создавать меню автоматически"...
+    match(function(){ return !this.mods.noAutoMenu; })
+    .content()(function(){
+        return {
+            elem : 'menu',
+        };
+
+    })
+
+);
+

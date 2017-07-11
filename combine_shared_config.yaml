@@ -1,0 +1,39 @@
+
+css:
+
+    include:
+
+        - libs
+        - blocks
+
+    exclude:
+
+        - blocks/custom
+        - blocks/pages
+
+    # exclude: # regexp example
+    #
+    #     - regexp:^common\.blocks/bootstrap
+
+js:
+
+    prepend:
+
+        #- js/bem-static/globals.js
+        #- js/bem-static/bemhtml_engine.js
+
+    include:
+
+        - libs
+        - blocks
+        - base
+
+    exclude:
+
+        - blocks/custom
+        - blocks/pages
+
+    # remove:
+    #
+    #     - ^libs
+

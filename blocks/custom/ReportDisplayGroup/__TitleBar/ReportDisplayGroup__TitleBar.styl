@@ -1,0 +1,18 @@
+// $Date: 2017-06-08 17:59:41 +0300 (Чт, 08 июн 2017) $
+// $Id: ReportDisplayGroup__TitleBar.styl 8577 2017-06-08 14:59:41Z miheev $
+
+// @require '../!Defaults.styl'
+
+.ReportDisplayGroup
+    &__TitleBar
+        clearfix()
+        position: relative
+        transition: background .25s
+        min-height: $input_size
+        ^[0]_expanded &
+            background: $layout-background-color
+        ^[0]_empty &
+            // color: $light-text-color
+            opacity: .3
+        //
+

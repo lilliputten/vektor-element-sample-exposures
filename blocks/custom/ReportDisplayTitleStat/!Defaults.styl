@@ -1,0 +1,29 @@
+// $Date: 2017-06-14 13:12:41 +0300 (Ср, 14 июн 2017) $
+// $Id: !Defaults.styl 8590 2017-06-14 10:12:41Z miheev $
+
+$ItemHeight = $input_size
+$ItemLeftPadding = 10px
+$DelimHeight = $ItemHeight
+$DelimVPadding = 4px
+$DelimHMargin = 8px
+// $DelimLineWidth = 1px
+$DelimWidth = 10px
+
+$DelimResizingPlusBorder = 2px
+
+$DelimColor = $light-border-color
+$DelimResizingColor = darken($DelimColor,20)
+$ItemHoveredBgColor = alpha($DelimColor,.3)
+$ItemExpandedHoveredBgColor = darken($DelimColor,5)
+$ItemResizingBgColor = alpha($DelimColor,1)
+$ItemExpandedResizingBgColor = darken($DelimColor,15)
+
+$HeaderDelimColor = darken($accent-color,5) // #FFF
+$HeaderDelimResizingColor = darken($HeaderDelimColor,10)
+$HeaderItemFgColor = #FFF
+$HeaderItemBgColor = $accent-color
+$HeaderItemHoveredBgColor = darken($HeaderItemBgColor,5) // alpha($DelimColor,.3)
+// $HeaderItemExpandedHoveredBgColor = darken($HeaderItemBgColor,10) // darken($DelimColor,5)
+$HeaderItemResizingBgColor = darken($HeaderItemBgColor,10) // alpha($DelimColor,1)
+// $HeaderItemExpandedResizingBgColor = darken($HeaderItemBgColor,10) // darken($DelimColor,15)
+

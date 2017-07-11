@@ -1,0 +1,27 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals debugger, DEBUG, DBG, project, match, block, elem, mod, elemMod, oninit, xjstOptions, wrap, replace, extend, mode, def, content, appendContent, prependContent, attrs, addAttrs, js, addJs, mix, addMix, mods, addMods, addElemMods, elemMods, tag, cls, bem, local, applyCtx, applyNext, apply */
+/**
+ *
+ * @module ReportDisplayTitleStat__Text
+ * @overview __INFO__
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ *
+ * @since 2017.06.08 17:42:59
+ * @version 2017.06.08 17:42:59
+ *
+ * $Date: 2017-06-08 17:59:41 +0300 (Чт, 08 июн 2017) $
+ * $Id: ReportDisplayTitleStat__Text.bemhtml 8577 2017-06-08 14:59:41Z miheev $
+ *
+ */
+
+block('ReportDisplayTitleStat').elem('Text')(
+
+    // content()(function(){
+    //     return this.ctx.itemCtx.val;
+    // }),
+
+    tag()()
+
+);
+

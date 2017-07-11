@@ -1,0 +1,24 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals debugger, DEBUG, DBG, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs */
+/**
+ *
+ * @module ReportPrintGroup__TableCell
+ * @overview ReportPrintGroup__TableCell
+ * @author lilliputten <lilliputten@yandex.ru>
+ *
+ * @since 2017.04.13 19:54:49
+ * @version 2017.04.13 19:54:49
+ *
+ * $Date: 2017-06-06 15:15:36 +0300 (Вт, 06 июн 2017) $
+ * $Id: ReportPrintGroup__TableCell.bemhtml 8547 2017-06-06 12:15:36Z miheev $
+ *
+*/
+
+block('ReportPrintGroup').elem('TableCell')(
+
+    tag()('td'),
+
+    match(function(){ return this.elemMods.Head; }).tag()('th')
+
+);
+

@@ -1,0 +1,77 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals debugger, DEBUG, DBG, project, match, block, elem, mod, elemMod, oninit, xjstOptions, wrap, replace, extend, mode, def, content, appendContent, prependContent, attrs, addAttrs, js, addJs, mix, addMix, mods, addMods, addElemMods, elemMods, tag, cls, bem, local, applyCtx, applyNext, apply */
+/**
+ *
+ * @module ReportPrintGroup
+ * @overview __INFO__
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2017.06.06 13:20:18
+ * @version 2017.06.06 13:20:18
+ *
+ * $Date: 2017-06-27 12:09:08 +0300 (Вт, 27 июн 2017) $
+ * $Id: ReportPrintGroup.bemhtml 8639 2017-06-27 09:09:08Z miheev $
+ *
+ */
+
+block('ReportPrintGroup')(
+
+    /** def ** {{{ */
+    def()(function(){
+        this.escapeContent = false;
+        this.rootCtx = this.ctx;
+        this._getArray = function(a){
+            if ( typeof a === 'undefined' || a === null ) {
+                a = [];
+            }
+            else if ( !Array.isArray(a) ) {
+                a = [ a ];
+            }
+            return a;
+        };
+        this._getDate = function(d){
+            if ( typeof d === 'number' ) {
+                d = new Date(d);
+            }
+            if ( typeof d === 'object' ) {
+                d = project.helpers.dateformatter.formatDate(d, project.config.formats.datetime);
+            }
+            return d;
+        };
+        return applyNext();
+    }),/*}}}*/
+
+    // content()(function(){
+    //     return this._getArray(applyNext());
+    // }),
+
+    // Заголовок
+    match(function(){ return this.mods.showTitle && this.rootCtx.title; })
+    .appendContent()(function(){
+        return { elem : 'Title', content : this.rootCtx.title };
+    }),
+
+    // Блок статистики
+    match(function(){ return this.mods.showStat && this.rootCtx.Stat; })
+    .appendContent()(function(){
+        return { elem : 'Stat', content : this.rootCtx.Stat };
+    }),
+
+    // Таблица
+    match(function(){ return this.mods.showTable && this.rootCtx.Table; })
+    .content()(function(){
+        var content = this._getArray(applyNext()),
+            elem = { elem : 'Table' };
+        if ( this.mods.tableFirst ) {
+            content.unshift(elem);
+        }
+        else {
+            content.push(elem);
+        }
+        return content;
+    }),
+
+    tag()()
+
+);
+

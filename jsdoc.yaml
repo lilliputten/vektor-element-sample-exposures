@@ -1,0 +1,21 @@
+    tags:
+        allowUnknownTags: true
+    source:
+        # excludePattern: '(^|\\/|\\\\)_'
+        excludePattern: '((^|\/|\\)(00|_00)|[_~]$)'
+    opts:
+        destination: './generated.docs'
+    plugins:
+        - 'plugins/markdown'
+        #- 'plugins/bem'
+        - 'plugins/foldmarkers'
+    templates:
+        cleverLinks: false
+        monospaceLinks: false
+        default:
+            outputSourceFiles: true
+        path: 'ink-docstrap'
+        theme: 'cosmo'
+        navType: 'vertical'
+        linenums: true
+        dateFormat: 'YYYY.MM.DD, hh:mm:ss'

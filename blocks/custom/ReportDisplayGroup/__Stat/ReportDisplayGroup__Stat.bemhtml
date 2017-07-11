@@ -1,0 +1,49 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals debugger, DEBUG, DBG, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs, mix, mod */
+/**
+ *
+ * @module ReportDisplayGroup__Stat
+ * @overview __INFO__
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ *
+ * @since 2017.05.22 18:29:38
+ * @version 2017.05.22 18:29:38
+ *
+ * $Date: 2017-05-22 20:29:39 +0300 (Пн, 22 май 2017) $
+ * $Id: ReportDisplayGroup__Stat.bemhtml 8405 2017-05-22 17:29:39Z miheev $
+ *
+ */
+
+block('ReportDisplayGroup').elem('Stat')(
+
+    def()(function(){
+        return applyCtx({
+            block : 'ReportDisplayStat',
+            id : this.rootCtx.id + 'Stat',
+            mix : [
+                { block : this.block, elem : this.elem },
+            ],
+            content : this.Stat,
+        });
+    }),
+
+    // content()(function(){/*{{{*/
+    //     return {
+    //         block : 'ReportDisplayStat',
+    //         id : this.rootCtx.id + 'Stat',
+    //         mix : [
+    //             { block : this.block, elem : this.elem },
+    //         ],
+    //         content : {
+    //             elem : 'statgroup',
+    //             content : this.Stat,
+    //         },
+    //     };
+    // }),/*}}}*/
+
+    tag()()
+
+);
+
+

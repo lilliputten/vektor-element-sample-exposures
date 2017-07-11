@@ -1,0 +1,43 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals debugger, DEBUG, DBG, project, match, block, elem, mod, elemMod, oninit, xjstOptions, wrap, replace, extend, mode, def, content, appendContent, prependContent, attrs, addAttrs, js, addJs, mix, addMix, mods, addMods, addElemMods, elemMods, tag, cls, bem, local, applyCtx, applyNext, apply */
+/**
+ *
+ * @module ReportDisplay__Title
+ * @overview __INFO__
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ *
+ * @since 2017.06.05 14:40:59
+ * @version 2017.06.05 14:40:59
+ *
+ * $Date: 2017-06-06 15:15:36 +0300 (Вт, 06 июн 2017) $
+ * $Id: ReportDisplay__Title.bemhtml 8547 2017-06-06 12:15:36Z miheev $
+ *
+ */
+
+block('ReportDisplay').elem('Title')(
+
+    def()(function(){
+
+        // Сохраняем элемент 'Title' для экспорта
+        var ctx = Object.assign({}, this.ctx, {
+            elem : 'Export',
+            content : null,
+            mix : [
+                {
+                    block : 'exportable',
+                    js : {
+                        export : {
+                            elem : this.elem,
+                            content : this.ctx.content,
+                        },
+                    }
+                },
+            ],
+        });
+
+        return applyCtx(ctx);
+    })
+
+);
+

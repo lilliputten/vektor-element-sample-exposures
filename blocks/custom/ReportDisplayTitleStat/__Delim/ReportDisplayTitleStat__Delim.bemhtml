@@ -1,0 +1,29 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals debugger, DEBUG, DBG, project, match, block, elem, mod, elemMod, oninit, xjstOptions, wrap, replace, extend, mode, def, content, appendContent, prependContent, attrs, addAttrs, js, addJs, mix, addMix, mods, addMods, addElemMods, elemMods, tag, cls, bem, local, applyCtx, applyNext, apply */
+/**
+ *
+ * @module ReportDisplayTitleStat__Delim
+ * @overview __INFO__
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ *
+ * @since 2017.06.08 17:43:05
+ * @version 2017.06.08 17:43:05
+ *
+ * $Date: 2017-06-14 13:12:41 +0300 (Ср, 14 июн 2017) $
+ * $Id: ReportDisplayTitleStat__Delim.bemhtml 8590 2017-06-14 10:12:41Z miheev $
+ *
+ */
+
+block('ReportDisplayTitleStat').elem('Delim')(
+
+    // content()({ elem : 'DelimLine' }),
+
+    attrs()({
+        title : '',
+    }),
+
+    tag()()
+
+);
+

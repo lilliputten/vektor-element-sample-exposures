@@ -1,0 +1,54 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals debugger, DEBUG, DBG, project, match, block, elem, mod, elemMod, oninit, xjstOptions, wrap, replace, extend, mode, def, content, appendContent, prependContent, attrs, addAttrs, js, addJs, mix, addMix, mods, addMods, addElemMods, elemMods, tag, cls, bem, local, applyCtx, applyNext, apply */
+/**
+ *
+ * @module ReportDisplayGroup__TitleBar
+ * @overview __INFO__
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ *
+ * @since 2017.05.22 17:49:09
+ * @version 2017.05.22 17:49:09
+ *
+ * $Date: 2017-06-09 18:41:58 +0300 (Пт, 09 июн 2017) $
+ * $Id: ReportDisplayGroup__TitleBar.bemhtml 8581 2017-06-09 15:41:58Z miheev $
+ *
+ */
+
+block('ReportDisplayGroup').elem('TitleBar')(
+
+    match(function(){ return this.mods.showTitle && ( this.rootCtx.title || this.mods.titleStat ); })
+    .content()(function(){
+        var content = this.rootCtx.title;
+        if ( this.mods.titleStat ) {
+            content = {
+                block : 'ReportDisplayTitleStat',
+                mods : {
+                    mode : this.mods.titleStat || 'row', // "Строка" -- заголовок группы
+                },
+                titleStatColumns : this.rootCtx.titleStatColumns,
+                statItemsDescr : this.rootCtx.statItemsDescr,
+                combinedColumns : this.rootCtx.combinedColumns,
+                content : this.Stat,
+            };
+        }
+        return [
+            {
+                elem : 'TitleText',
+                content : content,
+            },
+        ];
+    }),
+
+    // mod('expandable', true).
+    match(function(){ return !this.mods.empty && this.mods.expandable; })
+    .appendContent()(function(){
+        return {
+            elem : 'TitleExpand',
+        };
+    }),
+
+    tag()()
+
+);
+

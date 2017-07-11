@@ -1,0 +1,14 @@
+// $Date: 2017-05-23 16:13:53 +0300 (Вт, 23 май 2017) $
+// $Id: ReportDisplayGroup.styl 8415 2017-05-23 13:13:53Z miheev $
+
+@require '!Defaults.styl'
+
+.ReportDisplayGroup
+    ^[0]_hidden
+        display: none
+    &:not(^[0]_hidden):not(:last-child)
+        margin-bottom: 10px
+    overflow: hidden
+    border-radius: 4px
+    border: 1px solid $light-border-color
+    background-color: $BgColor

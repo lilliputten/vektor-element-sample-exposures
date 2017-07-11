@@ -1,0 +1,30 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals debugger, DEBUG, DBG, project, match, block, elem, mod, elemMod, oninit, xjstOptions, wrap, replace, extend, mode, def, content, appendContent, prependContent, attrs, addAttrs, js, addJs, mix, addMix, mods, addMods, addElemMods, elemMods, tag, cls, bem, local, applyCtx, applyNext, apply */
+/**
+ *
+ * @module ReportDisplayTitleStat_mode_header
+ * @overview __INFO__
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2017.06.09 15:34:32
+ * @version 2017.06.09 15:34:32
+ *
+ * $Date: 2017-06-09 18:41:58 +0300 (Пт, 09 июн 2017) $
+ * $Id: ReportDisplayTitleStat_mode_header.bemhtml 8581 2017-06-09 15:41:58Z miheev $
+ *
+ */
+
+block('ReportDisplayTitleStat').mod('mode', 'header')(
+
+    addJs()(true),
+
+    elem('Item')(
+        content()(function(){
+            var content = applyNext();
+            return  content || this.ctx.title;
+        })
+    ),
+
+    tag()()
+
+);

@@ -1,0 +1,297 @@
+/* jshint camelcase: false, unused: false, eqeqeq: false, undef: false */
+/* globals DBG, DEBUG, LOCAL_ENB, module */
+/**
+ *
+ * @overview Страница Report
+ * @author Михаил Греков <mihail-grekov@mail.ru>
+ *
+ * @since 2016.08.19, 14:00
+ * @version 2016.12.07, 12:04
+ *
+ * $Date: 2017-07-10 20:02:17 +0300 (Пн, 10 июл 2017) $
+ * $Id: Report.bemjson 8729 2017-07-10 17:02:17Z miheev $
+ *
+*/
+
+var promise = new ( require('vow') ).Promise (function(resolve, reject) { // Begin Promise - Экспорт модуля
+require('../../System.js').then(function(System) { // Begin System - Ждём завершения отработки окружения
+try { // Begin Try - Перехватываем ошибки
+
+/*{{{ Begin bemjson creation - Создаём описание страницы */
+
+var
+
+    // Идентификатор страницы (из пути файла)
+    pageId = System.getPageId(__dirname),
+
+    // Параметры для генерации компонент
+    // box_actions_role_xfilters_show = false, // xfilters пока не используются
+    ObjectsSelector_show = true,
+
+    /*{{{ Описание содержимого блока panelbox -- */otchet_panelbox_content = [
+
+        /*{{{ box_actions:main: Основная секция с элементами управления страницей */{
+            // block : 'box_actions', mods : { filters : true, role : 'filters', id : 'filters' },
+            // box_id : 'filters',
+            block : 'box_actions', mods : { filters : true, role : 'main', id : 'mainFilter' },
+            boxing : [ 'sz_origin', 'sz_crop', 'h_padded', 'frame_bottom' ],
+            box_id : 'box_actions_main',
+            content : [
+                /*{{{ Тип отчёта */{ elem : 'group', id : 'type', type : [ 'left' ], content : [
+                ] },/*}}}*/
+                /*{{{ Отчётный период */{ elem : 'group', id : 'mainFilters', type : [ 'filters', 'left' ], content : [
+                    { elem : 'text', content : 'Отчётный период с' },
+                    { elem : 'input',
+                        type : 'date',
+                        id : 'BeginTime',
+                        placeholder : 'Начало периода',
+                    },
+                    { elem : 'text', content : 'по' },
+                    { elem : 'input',
+                        type : 'date',
+                        id : 'EndTime',
+                        placeholder : 'Конец периода',
+                    },
+                ] },/*}}}*/
+                /*{{{ Кнопка показа панелей для выбора КО */{ elem : 'group', type : [ 'left' ], content : [
+                    /*{{{*/{ elem : 'action',
+                        id : 'ko_filter_control',
+                        mods : {
+                            // togglable : 'check',
+                            boxing_controller : true,
+                            checked : ObjectsSelector_show,
+                        },
+                        js : { boxes : [
+                            'box_group_ko_filter',
+                        ], },
+                        title : 'Выбрать КО',
+                        icon : 'icon-turnaround ti ti-angle-down',
+                        cls : 'button_action_light',
+                    },/*}}}*/
+                ] },/*}}}*/
+                /*{{{ Кнопки действий */{ elem : 'group', type : [ 'right', 'actions' ], id : 'actions', content : [
+                    { elem : 'button', id : 'apply' },
+                ] },/*}}}*/
+            ],
+        },/*}}}*/
+        /*{{{ box_group:ko_filter: Группа секций для выбора КО */{
+            block : 'box_group', mods : {
+                type : 'ObjectsSelector',
+                id : 'ko_filter',
+                noAutoMenu : true,
+            },
+            box_id : 'box_group_ko_filter',
+            boxing : [ ( ObjectsSelector_show ? 'normal' : 'hidden' ), 'optional', 'sz_origin', 'sz_wrap'/* , 'h_padded' */ ],
+            mix : [
+                { block : 'datasets', js : { id : 'ko_filter' } },
+            ],
+            content : [
+                /*{{{ box_actions:filters: filter_controller -- Фильтры выбора КО */{
+                    block : 'box_actions', mods : { filters : true, role : 'filters', id : 'filters' },
+                    box_id : 'filters',
+                    js : {
+                        filter_param : 'param',
+                    },
+                    boxing : [ /* ( ObjectsSelector_show ) ? 'normal' : 'hidden', */
+                        'optional', 'sz_origin', 'sz_wrap', 'h_padded', 'frame_bottom' ],
+                    content : [
+                        ] },/*}}}*/
+                        /*{{{ Контейнер для созадния фильтров */{ elem : 'group', type : 'filters', id : 'filters', content : [
+                            // Контейнер создаётся автоматически, если не создан предварительно. См. `box_actions_filters:_init_filters_static_dom()`
+                            /**
+                             *
+                             * @see См. специфические определения стилей для `.box_actions__group_filters`
+                             * в `project/blocks/interface/box_actions/__group/box_actions__group.styl`
+                             *
+                             * Фильтры генерятся динамически в контроллере формы (напр. `project/blocks/custom/objects_list/objects_list.js:create_filters()`) для AdminKO).
+                             * Пример кода после обработки bemxjst:
+                             *
+                             * { elem : 'select', id : 'filter_type_ko', text : 'Тип КО', hint : 'Выбрать тип контролируемого объекта', allow_null : true, options : [
+                             *     { val : 1, text : '1' },
+                             *     { val : 2, text : '2' },
+                             *     { val : 3, text : '3' },
+                             * ]},
+                             *
+                             */
+                        ] },/*}}}*/
+                    ],
+                },/*}}}*/
+                /*{{{ ObjectsSelector: view_controller -- Контроллер показа/выбора КО */{
+                    block : 'ObjectsSelector',
+                    boxing : [ 'optional', 'sz_origin', 'sz_crop', 'frame_bottom' ],
+                    box_id : 'ObjectsSelector',
+                    mods : {
+                        noAutoMenu : true,
+                    },
+                    mix : [
+                        // Используем как загрузчик данных КО
+                        { block : 'dataloader', mods : { src : 'servercolumns' } },
+                    ],
+                },/*}}}*/
+                /*{{{ box_actions:action: Действия с выбором КО, показ информации */{
+                    block : 'box_actions', mods : { role : 'actions', id : 'actions' },
+                    box_id : 'box_actions_actions',
+                    js : {
+                        filter_param : 'param',
+                    },
+                    boxing : [ /* ( ObjectsSelector_show ) ? 'normal' : 'hidden', */ 'optional', 'sz_origin', 'sz_wrap', 'h_padded', 'frame_bottom' ],
+                    content : [
+                        /*{{{ Кнопка "Применить" */{ elem : 'group', type : 'right', id : 'apply', content : [
+                            /*{{{*/{ elem : 'action', id : 'ko_filter_close',
+                                title : 'Закрыть',
+                                mods : {
+                                    boxing_controller : true,
+                                    checked : ObjectsSelector_show,
+                                },
+                                js : { boxes : [
+                                    'box_group_ko_filter',
+                                ], },
+                                cls : 'button_action_neutral_light button_no_frame button_icon',// button_no_frame button_icon',
+                                icon : 'icon-turnaround ti ti-angle-down',
+                            },/*}}}*/
+                        ] },/*}}}*/
+                        /*{{{ Кнопка "Показать ещё" */
+                        { elem : 'group', type : 'left', id : 'show_more', content : [
+                            /*{{{*/{ elem : 'action', id : 'show_more',
+                                mods : {
+                                    // disabled : true,
+                                },
+                                title : 'Показать ещё',
+                                icon : 'fa fa-refresh',
+                                cls : 'button_action_light',
+                            },/*}}}*/
+                        ] },/*}}}*/
+                        /*{{{ Кнопки действий со списком */
+                        { elem : 'group', type : 'left', id : 'list_control', content : [
+                            /*{{{*/{ elem : 'action', id : 'check_all',
+                                mods : {
+                                    // disabled : true,
+                                },
+                                title : 'Выбрать всё',
+                                icon : 'fa fa-circle',
+                                cls : 'button_action_light button_no_frame',
+                            },/*}}}*/
+                            /*{{{*/{ elem : 'action', id : 'check_none',
+                                mods : {
+                                    // disabled : true,
+                                },
+                                title : 'Сбросить всё',
+                                icon : 'fa fa-circle-thin',
+                                cls : 'button_action_light button_no_frame',
+                            },/*}}}*/
+                        ] },/*}}}*/
+                        /*{{{ Статистика/Информация */
+                        { elem : 'group', type : [ 'left', 'info', 'info_left_delim' ], id : 'ko_filter_show_info', content : [
+                            // 'Показано ', { elem : 'info_show_count' }, ' из ', { elem : 'info_total_count' }
+                            { elem : 'text', content : [
+                                ' Показано ',
+                                { tag : 'span', cls : 'info_show_count' },
+                                ' из ',
+                                { tag : 'span', cls : 'info_filtered_count' },
+                                ' (всего ',
+                                { tag : 'span', cls : 'info_total_count' },
+                                '), выбрано: ',
+                                { tag : 'span', cls : 'info_checked_count' },
+                            ] },
+                        ] },/*}}}*/
+                    ],
+                },/*}}}*/
+            ],
+        },/*}}}*/
+
+        /*{{{ panelbox_Report: Блок, содержащий группу секций показа отчёта */{
+            block : 'panelbox',
+            id : 'panelbox_ReportBase', // Идентификатор
+            mods : {
+                view : true, // Модификатор для нахождения блока
+                frame : 'top', // Задаем рамку сверху
+            },
+            mix : [
+                { block : 'boxing', mods : { sz_target : true, sz_sync_inside : true } }, // Подчинённый блок `boxing`
+            ],
+            content : [
+            /*{{{ box_actions:controls: Управление отчётом, пагинатор, показ информации/статистики. */{
+                block : 'box_actions', mods : { role : 'controls' },
+                id : 'box_actions_controls',
+                mix : [
+                    { block : 'boxing', mods : { sz_origin : true, sz_crop : true, h_padded : true, frame : 'bottom' } },
+                ],
+                content : [
+                    /*{{{ Информация и статистика */{ elem : 'group', type : [ /* 'right', */ 'info'/* , 'info_left_delim' */ ], content : [
+                        { elem : 'text', elemMods : { info : true }, content : [
+                            { tag : 'span', cls : 'show_if if_report_created', content : [
+                                'Отчёт создан',
+                                // ' Найдено отчётных периодов: ',
+                                // { tag : 'span', cls : 'info_filtered_count' },
+                                // ' из ',
+                                // { tag : 'span', cls : 'info_total_count' },
+                                // ', выбрано: ',
+                                // { tag : 'span', cls : 'info_checked_count' },
+                            ]},
+                            { tag : 'span', cls : 'show_if if_report_absent', content : [
+                                'Отчёт не создан...',
+                            ]},
+                        ]},
+                    ]},/*}}}*/
+                    /*{{{ Кнопки действий */{ elem : 'group', type : [ 'right', 'actions' ], id : 'actions', content : [
+                        { elem : 'button', id : 'save' /* , cls : 'show_if if_report_created', disabled : true */ },
+                        { elem : 'button', id : 'print' /* , cls : 'show_if if_report_created', disabled : true */ },
+                    ] },/*}}}*/
+                    /*{{{ Постраничная навигация. Заполняется автоматически из pager_controller */{ elem : 'group', type : [ 'right' ], id : 'pager', content : [
+                    ] },/*}}}*/
+                ],
+            },/*}}}*/
+            /*{{{ Report: Ведущий блок страницы */{
+                block : 'Report',
+                box_id : 'Report',
+                mix : [
+                    { block : 'boxing', mods : { sz_target : true, vz_padded : true, hx_padded : true, sz_sync_inside : true } },
+                    { block : 'panelbox', id : 'panelbox_Report_container' },
+                    // { block : 'dataloader', mods : { src : 'local' } },
+                ],
+                content : {
+                    elem : 'container',
+                    mix : [
+                        'boxing_container',
+                        // 'full-height-container',
+                        'scrollable-container',
+                    ],
+                },
+            },/*}}}*/
+            /*{{{ screenholder: Заставка экрана для группы секций показа отчёта */{
+                block : 'screenholder', mods : { theme : 'light' }
+            },/*}}}*/
+            ],
+        },/*}}}*/
+
+    ],/*}}}*/
+
+    // Основной блок
+    bemjson_content = [
+        {
+            block : 'panelbox',
+            id : 'panelbox_ReportRoot',
+            mods : { root : true }, // Основной `panelbox` на странице
+            content : otchet_panelbox_content,
+        },
+    ],
+
+    // Вся страница
+    bemjson = System.app({
+        pageId : pageId,
+        content : bemjson_content,
+    }),
+
+    undef
+;
+
+/* End bemjson creation }}}*/
+
+resolve(bemjson);
+
+} catch (e) { console.error(e); reject(e); } // End Try
+}); // End System
+}); // End Promise
+
+module.exports = promise; // Возвращаем результат
+

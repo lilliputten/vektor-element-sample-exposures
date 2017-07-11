@@ -1,0 +1,20 @@
+// $Date: 2017-05-30 19:36:59 +0300 (Вт, 30 май 2017) $
+// $Id: ReportDisplayGroup__TitleText.styl 8449 2017-05-30 16:36:59Z miheev $
+
+// @require '../!Defaults.styl'
+
+.ReportDisplayGroup
+    &__TitleText
+        line-height: $input_size
+        padding: 0 10px
+        ^[0]_paddedTitle &
+        ^[0]_expandable &
+            // Отступ для кнопки `Expand`
+            margin-left: $input_size
+        .gray
+            color: lighten($neutral-color,10)
+            strong
+                color: $default-color
+                font-weight: normal
+        //
+

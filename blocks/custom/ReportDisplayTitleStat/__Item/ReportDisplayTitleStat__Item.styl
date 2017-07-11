@@ -1,0 +1,43 @@
+// $Date: 2017-06-14 13:51:11 +0300 (Ср, 14 июн 2017) $
+// $Id: ReportDisplayTitleStat__Item.styl 8591 2017-06-14 10:51:11Z miheev $
+
+@require '../!Defaults.styl'
+
+.ReportDisplayTitleStat
+    &__Item
+        // box-sizing: border
+        position: relative
+        display: inline-block
+        white-space: nowrap
+        padding-right: $DelimWidth
+        padding-left: $ItemLeftPadding
+        overflow: hidden
+        text-overflow: ellipsis
+        transition: background .15s
+        border-right: 1px solid $DelimColor
+        &:first-child
+            border-left: 1px solid $DelimColor
+        &_hidden
+            display: none
+        &_hovered
+            background-color: $ItemHoveredBgColor
+            ^[0]_expanded &
+                background-color: $ItemExpandedHoveredBgColor
+        &_resizing
+            background-color: $ItemResizingBgColor
+            border-color: $DelimResizingColor
+            // box-shadow: inset -2px 0 0 0 $DelimColor
+            & ^[0]__Delim
+                border-right: $DelimResizingPlusBorder solid $DelimResizingColor
+            ^[0]_expanded &
+                background-color: $ItemExpandedResizingBgColor
+        // Не позволять выделение во время ресайзинга
+        ^[0]_resizing &
+        &_resizing
+            cursor: col-resize
+            user-select: none
+        // // Не подсвечиваем соседние элементы
+        // ^[0]_resizing &:not(&_resizing)
+        //     background: none
+        //
+

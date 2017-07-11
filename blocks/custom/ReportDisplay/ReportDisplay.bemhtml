@@ -1,0 +1,28 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals debugger, DEBUG, DBG, project, match, block, elem, mod, elemMod, oninit, xjstOptions, wrap, replace, extend, mode, def, content, appendContent, prependContent, attrs, addAttrs, js, addJs, mix, addMix, mods, addMods, addElemMods, elemMods, tag, cls, bem, local, applyCtx, applyNext, apply */
+/**
+ *
+ * @module ReportDisplay
+ * @overview __INFO__
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2017.06.02 18:37:17
+ * @version 2017.06.02 18:37:17
+ *
+ * $Date: 2017-06-13 19:21:13 +0300 (Вт, 13 июн 2017) $
+ * $Id: ReportDisplay.bemhtml 8587 2017-06-13 16:21:13Z miheev $
+ *
+ */
+
+block('ReportDisplay')(
+
+    addMix()(function(){
+        return [
+            // 'boxing_container',
+            // 'full-height-container',
+            // 'scrollable-container',
+        ];
+    })
+
+);
+
