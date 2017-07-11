@@ -340,9 +340,6 @@ var ReportPrototype = /** @lends Report.prototype */ {
     /** error ** {{{ Конечный интерфейс для показа сообщения об ошибке пользователю. */
     error : function (error, errorIcon) {
 
-        // console.error( 'Report error catched:', error );
-        // /*DEBUG*//*jshint -W087*/debugger;
-
         var errorHtml = app.error2html(error);
 
         this.Modules.Dom.params.screenholder.error(errorHtml, errorIcon);

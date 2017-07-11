@@ -66,9 +66,6 @@ var __Loader = /** @lends Report__Loader.prototype */ {
             reportData = Report.params.reportData
         ;
 
-        // DBG('reportData receiveReportDataPart', receivedData);
-        // debugger;
-
         if ( !reportData.receivedData ) {
             reportData.receivedData = [];
         }
@@ -180,7 +177,6 @@ var __Loader = /** @lends Report__Loader.prototype */ {
         // Оценка выполнения. Инициализация ожидателя.
         else if ( AnswerType === 3 ) {
             console.log('reportData receiveReportData estimate', QueryId, '-', PartCount, data);
-            // debugger;
             // Сохраняем идентификатор сессии запроса
             if ( QueryId ) {
                 reportData.QueryId = QueryId;
@@ -199,7 +195,6 @@ var __Loader = /** @lends Report__Loader.prototype */ {
         // Полные или частичные данные (и сессия соответствует ожидаемой)
         else if ( ( QueryId && QueryId === reportData.QueryId ) && ( AnswerType === 1 || AnswerType === 2 ) ) {
             console.log('reportData receiveReportData data', QueryId, '-', PartNumber, '/', reportData.PartCount, data);
-            // debugger;
             this.receiveReportDataPart(RepDetail, data);
             // Если указано, какую часть данных принимаем...
             if ( PartNumber > 0 ) {
@@ -266,9 +261,6 @@ var __Loader = /** @lends Report__Loader.prototype */ {
 
         ;
 
-        // DBG('startReportReceiver', reportData);
-        // debugger;
-
         // Массив для накопления данных отчётов
         reportData.receivedData = [];
 
@@ -305,9 +297,6 @@ var __Loader = /** @lends Report__Loader.prototype */ {
             reportData = Report.params.reportData
 
         ;
-
-        // DBG( 'stopReportReceiver' );
-        // debugger;
 
         // Если подключён сокет, отсоединеяем прослушку событий
         if ( app.socket.isConnected() ) {
@@ -370,19 +359,14 @@ var __Loader = /** @lends Report__Loader.prototype */ {
 
         ;
 
-        // DBG('reportData cancelReportReceiver ...');
-        // debugger;
-
         requestWaiter
             .fail(function (error) {
                 console.error('reportData cancelReportReceiver error', error, 'reportData:', reportData.QueryId, '-', reportData);
                 /*DEBUG*//*jshint -W087*/debugger;
                 waiter.error(reportData.waiterId, error);
-                // return vow.Promise.reject(error);
             })
             .done(function (data) {
                 DBG('reportData cancelReportReceiver done', reportData.QueryId, '-', reportData);
-                // debugger;
 
                 // Если в конфигурации указано показывать недозагруженный отчёт, просто останавливаем получение данных.
                 if ( project.config.showCanceledReport ) {
@@ -623,9 +607,6 @@ var __Loader = /** @lends Report__Loader.prototype */ {
 
         ;
 
-        // DBG( 'reportData requestReportStart' );
-        // debugger;
-
         return requestWaiter
 
             // Получаем первый ответ (в случае синхронной передачи -- он же последний;
@@ -644,9 +625,6 @@ var __Loader = /** @lends Report__Loader.prototype */ {
 
                     reportData.QueryId = data.QueryId;
 
-                    console.log('reportData requestReportStart initial async packet:', reportData.QueryId, data);
-                    // debugger;
-
                     // ВНИМАНИЕ: Нет смысла делать к.-то отдельную процедуру,
                     // т.к. в ряде случаев асинхронное получение данных к этому моменту уже завершено.
                     // Просто возвращаем промис.
@@ -657,9 +635,6 @@ var __Loader = /** @lends Report__Loader.prototype */ {
 
                 // Синхронная передача: один пакет
                 else if ( data && data.resp && Array.isArray(data.resp) ) {
-
-                    // console.log('reportData requestReportStart sync data:', data);
-                    // debugger;
 
                     // Принимаем данные
                     that.receiveReportDataPart(data.resp, data);

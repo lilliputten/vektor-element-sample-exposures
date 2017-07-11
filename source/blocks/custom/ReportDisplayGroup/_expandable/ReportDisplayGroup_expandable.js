@@ -113,11 +113,6 @@ var ReportDisplayGroup_expandable = /** @lends ReportDisplayGroup_expandable.pro
         /** (expanded) ** {{{ Раскрытый блок */
         expanded : {
 
-            // /** true ** {{{ */
-            // true : function () {
-            //     debugger;
-            // },/*}}}*/
-
             /** '*' ** {{{ */
             '*' : function (modName, modVal) {
                 this.Stat && this.Stat.setMod(modName, modVal);
@@ -140,18 +135,7 @@ var ReportDisplayGroup_expandable = /** @lends ReportDisplayGroup_expandable.pro
 
 };
 
-provide(ReportDisplayGroup.declMod({ modName : 'expandable', modVal : true }, ReportDisplayGroup_expandable, /** @lends ReportDisplayGroup_expandable */{
-
-    // /** live() {{{ Lazy-инициализация.
-    //  */
-    // live : function() {
-    //
-    //     var ptp = this.prototype;
-    //
-    //     return this.__base.apply(this, arguments);
-    // }/*}}}*/
-
-})); // provide
+provide(ReportDisplayGroup.declMod({ modName : 'expandable', modVal : true }, ReportDisplayGroup_expandable)); // provide
 
 }); // module
 

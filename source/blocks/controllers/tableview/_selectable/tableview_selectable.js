@@ -130,35 +130,6 @@ provide(tableview.declMod({ modName : 'selectable', modVal : true }, /** @lends 
 
     },/*}}}*/
 
-    // /** _update_data() ** {{{ Обновить данные в таблице
-    //  * @param {object} data - Данные для показа колонок
-    //  * @param {boolean} append_mode - Режим добавления данных
-    //  */
-    // _update_data : function (data, append_mode) {
-    //
-    //     var tableview_selectable = this,
-    //         params = this.params,
-    //         that = this,
-    //
-    //         // NOTE: Вызываем метод базового блока
-    //         __base = this.__base.apply(this, arguments),
-    //
-    //         undef
-    //     ;
-    //
-    //     try {
-    //
-    //         // // События на теле таблицы
-    //         // this._init_body_actions();
-    //
-    //     }
-    //     catch (e) {
-    //         console.error(e);
-    //         /*DEBUG*//*jshint -W087*/debugger;
-    //     }
-    //
-    // },/*}}}*/
-
     /** _load_stored_params() ** {{{ Восстановить сохранённые значения
      */
     _load_stored_params : function () {
@@ -175,27 +146,6 @@ provide(tableview.declMod({ modName : 'selectable', modVal : true }, /** @lends 
         params.selected = store.get(this._store_id+'selected');
 
     },/*}}}*/
-
-    // /** initialize() ** {{{ Инициализация блока
-    //  */
-    // initialize : function (options) {
-    //
-    //     var tableview_selectable = this,
-    //         that = this,
-    //         params = this.params
-    //     ;
-    //
-    //     // NOTE: Вызываем метод базового блока
-    //     this.__base.apply(this, arguments);
-    //
-    //     // NOTE: В базовом блоке...
-    //     // this._id = params.id = this._id || options.id || params.id || 'default';
-    //     // this._store_id = params.id+'_tableview_';
-    //
-    //     // NOTE: Вызывается из базового блока
-    //     // this._load_stored_params();
-    //
-    // },/*}}}*/
 
     /** onInited() ** {{{ Инициализируем блок.
      */
@@ -221,36 +171,12 @@ provide(tableview.declMod({ modName : 'selectable', modVal : true }, /** @lends 
         js : {
             inited : function() {
 
-                // var tableview_selectable = this,
-                //     that = this,
-                //     params = this.params,
-                //     undef
-                // ;
-
-                // NOTE: Если onInited определён в базовом блоке, то он будет вызван помимо js:inited
-                // из onInited, если там есть вызов __base_apply
-                // (Если из базового js:inited будет вызван
-                // onInited, то сначала будет вызван модицированный метод.)
-                //
-                // this.__base.apply(this, arguments);
-
                 this.onInited();
 
             }
         },/*}}}*/
 
     },/*}}}*/
-
-}, /** @lends tableview_selectable */{
-
-    // /** live() {{{ Lazy-инициализация.
-    //  */
-    // live : function() {
-    //
-    //     var ptp = this.prototype;
-    //
-    //     return this.__base.apply(this, arguments);
-    // }/*}}}*/
 
 })); // provide
 

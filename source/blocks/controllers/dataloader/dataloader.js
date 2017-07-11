@@ -398,12 +398,6 @@ provide(BEMDOM.declBlock(this.name,  /** @lends dataloader.prototype */ {
             undef
         ;
 
-        // DEBUG: Отлаживаем получание данных для определённых колонок
-        // if ( column_id === 'typeID' || column_id === 'enabledStateList' ) {
-        //     $('.screenholder').hide();
-        //     debugger
-        // }
-
         return this.get_processed_data_value(column_id, val, user_mode);
 
     },/*}}}*/

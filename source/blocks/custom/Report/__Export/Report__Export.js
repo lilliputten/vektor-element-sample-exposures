@@ -443,62 +443,6 @@ var __Export = /** @lends Report__Export.prototype */ {
 
     },/*}}}*/
 
-    // /** saveRtfReport ** {{{ Сохраняем отчёт как RTF (OLD)
-    //  */
-    // saveRtfReport : function () {
-    //
-    //     var Report__Export = this,
-    //         Report = this.Report,
-    //
-    //         // Объект отчёта
-    //         reportData = Report.params.reportData,
-    //
-    //         // Получаем экспотрные данные
-    //         exportedData = Report.Modules.Data.exportData({ export : true }),
-    //
-    //         // Имя файла
-    //         fileName = 'reportData-' + Report.params.reportType + '.rtf',
-    //
-    //         // Идентификатор операции (для логирования/отладки)
-    //         opId = 'Report_saveRtfReport',
-    //
-    //         // Параметры запроса к серверу
-    //         ajaxMethod = 'POST',
-    //         ajaxUrl = project.helpers.expand_path('{{approot}}element-tcm/TCMAnalytics/SaveRTFReport'),
-    //
-    //         // Запрос данных для построения отчёта
-    //         reportWaiter = requestor.waiterRequest({
-    //             request_id : opId + Date.now(),
-    //             title : 'Подготовка RTF файла',
-    //             method : ajaxMethod,
-    //             url : ajaxUrl,
-    //             data : {
-    //                 reportType : Report.params.reportType,
-    //                 data : exportedData,
-    //             },
-    //         })
-    //
-    //     ;
-    //
-    //     return reportWaiter
-    //         .then(function(data) {
-    //             // Сохраняем файл
-    //             // см. также -- https://github.com/jimmywarting/StreamSaver.js -- лучше использовать для больших поточных данных?
-    //             var blob = new Blob([data], {
-    //                 // type: 'application/rtf;charset=utf-8',
-    //                 type: 'application/rtf',
-    //             });
-    //             FileSaver(blob, fileName);
-    //         })
-    //         .fail(function(data) {
-    //             console.error('saveRtfReport ajax error', data);
-    //             /*DEBUG*//*jshint -W087*/debugger;
-    //             Report.error(data);
-    //         })
-    //     ;
-    //
-    // },/*}}}*/
-
     /** saveRtfReport ** {{{ Сохраняем отчёт как RTF
      */
     saveRtfReport : function () {

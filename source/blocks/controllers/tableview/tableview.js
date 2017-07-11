@@ -124,9 +124,6 @@ provide(BEMDOM.declBlock(this.name, /** @lends tableview.prototype */ {
 
         container.domElem && ( container = container.domElem );
 
-        // debugger
-        // var $container = $(container);
-
         // Обновляем информацию
         BEMDOM.update(container.find('.info_total_count'), params.total_items_count);
         BEMDOM.update(container.find('.info_filtered_count'), params.filtered_items_count);
@@ -478,9 +475,6 @@ provide(BEMDOM.declBlock(this.name, /** @lends tableview.prototype */ {
                 params.checked = [];
             }
 
-            // $('.screenholder').hide();
-            // debugger
-
             // Добавляем строки прошедшие фильтр...
             while ( ( !show_stop || show_no < show_stop ) && row_no < total_items_count ) {
                 // ...Если строка проходит фильтры...
@@ -530,9 +524,6 @@ provide(BEMDOM.declBlock(this.name, /** @lends tableview.prototype */ {
 
             undef
         ;
-
-        // $('.screenholder').hide();
-        // debugger;
 
         try {
 
@@ -644,7 +635,6 @@ provide(BEMDOM.declBlock(this.name, /** @lends tableview.prototype */ {
         try {
             return this._filter_controller.prefilter_columns_promise()
                 .then(function(data){
-                    // debugger
                     that.update(false);
                 })
                 .fail(function(e){

@@ -246,8 +246,6 @@ provide(dataloader.declMod({ modName : 'src', modVal : 'servercolumns' }, /** @l
             undef
         ;
 
-        // debugger
-
         // Если нечего загружать, то положительный промис...
         if ( !absent_columns.length ) {
             // DBG( 'wait _resolve_data no absent!' );
@@ -285,15 +283,9 @@ provide(dataloader.declMod({ modName : 'src', modVal : 'servercolumns' }, /** @l
 
         ;
 
-        // if ( this.getMod('servercolumns' ) {
-        //     ctx_to_poll.unshift(this);
-        // }
-
         ctx_to_poll.forEach(function(ctx){
             if ( typeof ctx === 'object' && typeof ctx.columns_to_load === 'function' ) {
                 var ctx_list = ctx.columns_to_load();
-                // DBG( 'ctx_to_poll', ctx_to_poll, ctx, ctx_list );
-                // debugger
                 Array.isArray(ctx_list) && ctx_list.forEach(function(id){
                     if ( list.indexOf(id) === -1 ) {
                         list.push(id);

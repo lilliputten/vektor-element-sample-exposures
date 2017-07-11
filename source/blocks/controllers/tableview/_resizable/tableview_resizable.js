@@ -177,9 +177,6 @@ provide(tableview.declMod({ modName : 'resizable', modVal : true }, /** @lends t
             undef
         ;
 
-        // $('.screenholder').hide();
-        // debugger;
-
         // Устанавливаем все перемещатели
         // this.domElem.find(this.cell_selector).map(function(){
         this.findChildElems('headcell').map(function(elem){

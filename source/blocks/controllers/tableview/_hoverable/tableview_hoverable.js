@@ -95,35 +95,6 @@ provide(tableview.declMod({ modName : 'hoverable', modVal : true }, /** @lends t
 
     },/*}}}*/
 
-    // /** _update_data() ** {{{ Обновить данные в таблице
-    //  * @param {object} data - Данные для показа колонок
-    //  * @param {boolean} append_mode - Режим добавления данных
-    //  */
-    // _update_data : function (data, append_mode) {
-    //
-    //     var tableview_hoverable = this,
-    //         params = this.params,
-    //         that = this,
-    //
-    //         // NOTE: Вызываем метод базового блока
-    //         __base = this.__base.apply(this, arguments),
-    //
-    //         undef
-    //     ;
-    //
-    //     try {
-    //
-    //         // // События на теле таблицы
-    //         // this._init_body_actions();
-    //
-    //     }
-    //     catch (e) {
-    //         console.error(e);
-    //         /*DEBUG*//*jshint -W087*/debugger;
-    //     }
-    //
-    // },/*}}}*/
-
     /** onInited() ** {{{ Инициализируем блок.
      */
     onInited : function() {
@@ -148,36 +119,12 @@ provide(tableview.declMod({ modName : 'hoverable', modVal : true }, /** @lends t
         js : {
             inited : function() {
 
-                // var tableview_hoverable = this,
-                //     that = this,
-                //     params = this.params,
-                //     undef
-                // ;
-
-                // NOTE: Если onInited определён в базовом блоке, то он будет вызван помимо js:inited
-                // из onInited, если там есть вызов __base_apply
-                // (Если из базового js:inited будет вызван
-                // onInited, то сначала будет вызван модицированный метод.)
-                //
-                // this.__base.apply(this, arguments);
-
                 this.onInited();
 
             }
         },/*}}}*/
 
     },/*}}}*/
-
-}, /** @lends tableview_hoverable */{
-
-    // /** live() {{{ Lazy-инициализация.
-    //  */
-    // live : function() {
-    //
-    //     var ptp = this.prototype;
-    //
-    //     return this.__base.apply(this, arguments);
-    // }/*}}}*/
 
 })); // provide
 

@@ -65,7 +65,6 @@ var __Controls = /** @lends Report__Controls.prototype */ {
 
         try {
 
-            debugger;
             var
 
                 // У нас есть доступ к данным фильтра по КО. Используем их.
@@ -103,9 +102,6 @@ var __Controls = /** @lends Report__Controls.prototype */ {
                 // Получаем данные
                 .spread(function (receiveStatus, ko_columns_data/* , reportControllersData */) {
 
-                    // DBG( 'reportData applyReport 1st stage: received all data, ready to process', reportData );
-                    // debugger;
-
                     // Обрабатываем полученные данные (возвращаем промис)...
                     return Report.Modules.Data.processReceivedData(reportData.receivedData);
 
@@ -116,9 +112,6 @@ var __Controls = /** @lends Report__Controls.prototype */ {
 
                 // Если обработка прошла успешно, то показываем результат пользователю:
                 .then(function (data) {
-
-                    // DBG( 'reportData applyReport 3nd stage: create dom, show data', reportData );
-                    // debugger;
 
                     // Завершаем показ отчёта
                     Report.Modules.Show.updateReportDone();

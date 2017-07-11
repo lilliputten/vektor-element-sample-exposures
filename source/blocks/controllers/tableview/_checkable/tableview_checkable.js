@@ -163,8 +163,6 @@ provide(tableview.declMod({ modName : 'checkable', modVal : true }, /** @lends t
                         params.checked_rows.splice(checked_index, 1);
                     }
                 }
-                // DBG( 'checked/unchecked row', row_no, is_checked, params.checked_rows );
-                // debugger
 
                 // Дёргаем событие
                 that._emit('row_checked', {
@@ -243,11 +241,6 @@ provide(tableview.declMod({ modName : 'checkable', modVal : true }, /** @lends t
                 }
             }
         }
-
-        // $('.screenholder').hide();
-        // debugger
-
-        // DBG( 'check all items', set_or_clear );
 
         this._update_checked_status();
 
