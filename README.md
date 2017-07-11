@@ -60,8 +60,8 @@
   [Print](source/blocks/custom/Report/__Print),
   [ResultDom](source/blocks/custom/Report/__ResultDom),
   [Show](source/blocks/custom/Report/__Show).
-  Переопределения (на bem'овском стандартном `inherit`) см., напр., для модуля `Params`:
-  [source/blocks/custom/Report/__Params/_type](source/blocks/custom/Report/__Params/_type).
+  Переопределения (на bem'овском стандартном `inherit`) см., напр., для модуля
+  [Params](source/blocks/custom/Report/__Params/_type).
 
 - [ReportDisplay](source/blocks/custom/ReportDisplay),
   [ReportDisplayGroup](source/blocks/custom/ReportDisplayGroup),
