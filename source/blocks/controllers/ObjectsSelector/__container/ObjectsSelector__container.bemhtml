@@ -1,3 +1,4 @@
+// vim: ft=javascript
 block('ObjectsSelector').elem('container')(
 
     // Если нет флага "не создавать меню автоматически"...

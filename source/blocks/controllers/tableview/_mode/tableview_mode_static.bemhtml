@@ -1,3 +1,4 @@
+// vim: ft=javascript
 /* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
 /* globals debugger, DEBUG, DBG, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs, mix */
 /**

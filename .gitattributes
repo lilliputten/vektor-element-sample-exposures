@@ -1,1 +1,2 @@
 *.bemjson linguist-language=JavaScript
+*.bemhtml linguist-language=JavaScript

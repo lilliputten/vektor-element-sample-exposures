@@ -1,6 +1,6 @@
+// vim: ft=javascript
 /* jshint camelcase: false, unused: false, eqeqeq: false, undef: false */
 /* globals DBG, DEBUG, LOCAL_ENB, module */
-// vim: ft=javascript
 /**
  *
  * @overview Страница Report

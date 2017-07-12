@@ -1,3 +1,4 @@
+// vim: ft=javascript
 block('ObjectsSelector')(
 
     js()(function(){
